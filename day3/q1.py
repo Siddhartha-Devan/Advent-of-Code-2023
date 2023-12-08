@@ -4,18 +4,19 @@ with open("q", 'r') as file:
 
 for i in range(len(data)):
     data[i] = data[i].replace('\n', "")
-print(data)
+# print(data)
 length = len(data[0])
-
+print("len =", length)
 symbol_indices = []
 for i in range(0, len(data)):
     elm = data[i]
     symb_ind = []
     for j in range(len(elm)):
-        if elm[j].isalnum() == False and elm[j] != '.':
+        if elm[j].isnumeric() == False and elm[j] != '.':
             symb_ind.append(j)
-    print(symb_ind)
+    # print(symb_ind)
     symbol_indices.append(symb_ind)
+
 
 def num_collector(st, ind):
     num_in = '0'
@@ -59,7 +60,7 @@ def num_collector_rev(st, ind):
     num = str(int(num))
     return int(num[::-1])
 
-print(symbol_indices)
+# print(symbol_indices)
 
 parts_list = []
 
@@ -85,7 +86,12 @@ for i in range(1, len(symbol_indices)-1):
 # print(parts_list)
 print(sum(parts_list))     
 
-
+for i in symbol_indices:
+    try:
+        if min(i) <10:
+            print(min(i))
+    except:
+        pass
 
 
  
